@@ -39,7 +39,7 @@ elif idade < 18 and not tem_responsavel:
     print("Menores de 18 anos precisam estar acompanhados do responsável")
 
 else:
-    print("Reserva confirmada")
+    print("Reserva confirmada!")
     print(f"Nome: {nome}")
     print(f"Idade: {idade}")
     print(f"Dias de estadia: {dias}")
