@@ -10,7 +10,7 @@ vip = input("Você é cliente VIP? (sim/não)").lower()
 
 aceitou_regras = input("Você aceita as regras do hotel? (sim/não)").lower()
 
-if responavel == "sim":
+if responsavel == "sim":
     tem_responsavel = True
 else:
     tem_responsavel = False
