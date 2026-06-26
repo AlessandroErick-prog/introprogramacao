@@ -1,5 +1,3 @@
-
-
 # =========================================
 #   SISTEMA DE CADASTRO RPG - EDITION
 # =========================================
@@ -26,7 +24,7 @@ else:
     titulo = "🌱 APRENDIZ"
 
 # Barra de poder
-barra = "█" * nivel
+barra = "676767676767676767" * nivel
 
 # Resultado
 print("\n" + "=" * 45)
