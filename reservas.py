@@ -51,6 +51,6 @@ else:
 #REGRA 4: Cliente que fica 7+ E (AND) são VIPs: quarto melhor
 
 if dias >= 7 and cliente_vip:
-    print("Parabéns! Upgrade dequarto liberado!")
+    print("Parabéns! Upgrade de quarto liberado!")
 else:
     print:("Quarto padrão reservado.")              
