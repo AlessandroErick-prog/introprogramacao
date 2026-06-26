@@ -6,7 +6,7 @@ dias = int(input("Quantos dias você deseja ficar no hotel? "))
 
 responsavel = input("Está acompanhado de um responsável? (sim/não): ").lower()
 
-vip = input("Você é cliente VIP? (sim/não)").lower()
+vip = input("Você é cliente VIP? (sim/não): ").lower()
 
 aceitou_regras = input("Você aceita as regras do hotel? (sim/não)").lower()
 
@@ -40,7 +40,17 @@ elif idade < 18 and not tem_responsavel:
 
 else:
     print("Reserva confirmada!")
-    print(f"Nome: {nome}")
-    print(f"Idade: {idade}")
-    print(f"Dias de estadia: {dias}")
-    print(f"Cliente VIP: {'Sim' if cliente_vip else 'Não'}")
+    
+#REGRA 3: 3 diárias ou mais OU (OR) VIP = café da manhã
+
+if dias >= 3 or cliente_vip:
+    print("Você tem direito ao café da manhã!")
+else:
+    print("Você não tem direito ao café da manhã!")
+
+#REGRA 4: Cliente que fica 7+ E (AND) são VIPs: quarto melhor
+
+if dias >= 7 and cliente_vip:
+    print("Parabéns! Upgrade dequarto liberado!")
+else:
+    print:("Quarto padrão reservado.")              
