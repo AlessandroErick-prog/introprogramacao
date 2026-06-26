@@ -38,9 +38,9 @@ else:
     # Cálculo do valor
     total = preco * quantidade
 
-    # REGRA 3: Estudante tem 50% de desconto
+    # REGRA 3: Estudante tem 20% de desconto
     if tem_estudante:
-        total = total * 0.5
+        total = total * 0.8
         print("Desconto de estudante aplicado!")
         print("Compra realizada com sucesso!")
 
