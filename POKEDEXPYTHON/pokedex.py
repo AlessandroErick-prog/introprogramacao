@@ -15,8 +15,8 @@ hp_pokemon = int(input("Qual é o HP (vida) do seu pokémon?: "))
 peso_pokemon = float(input("Qual é o peso do seu pokémon?: "))
 
 print("RELATÓRIO FINAL")
-print(f"Nome do pokémon": nome)
-print(f"Tipo do pokémon": tipo)
-print(f"HP do pokémon": hp_pokemon)
-print(f"Peso do pokémon": peso_pokemon kg)
+print("Nome: ", nome)
+print("Tipo: ", tipo)
+print("HP: ", hp_pokemon)
+print("Peso: ", peso_pokemon)
 
