@@ -1,5 +1,3 @@
-# Sistema de cálculo do IMC
-
 # Constante
 LIMITE_IMC = 18.5
 
@@ -15,7 +13,7 @@ maior_de_idade = idade >= 18
 # Cálculo do IMC
 imc = peso / (altura ** 2)
 
-# Classificação do IMC
+# Classificação do IMC 
 if imc < 18.5:
     classificacao = "Abaixo do peso"
 elif imc < 25:
@@ -26,7 +24,7 @@ else:
     classificacao = "Obesidade"
 
 # Resultado
-print("\n===== RESULTADO =====")
+print("RESULTADO FINAL")
 print("Nome:", nome)
 print("Idade:", idade)
 print("Peso:", peso, "kg")
@@ -34,10 +32,8 @@ print("Altura:", altura, "m")
 print("IMC:", round(imc, 2))
 print("Classificação:", classificacao)
 
-# Operador lógico
+# Operadores lógicos
 if maior_de_idade and imc >= LIMITE_IMC:
-    print("Você é maior de idade e seu IMC está acima ou dentro do limite mínimo.")
+    observacao = print("Continue cuidando da sua saúde.")
 else:
-    print("Uma das condições não foi atendida.")
-
-print("=====================")
+    observacao = print("Atenção: comece a adotar hábitos saudáveis.")

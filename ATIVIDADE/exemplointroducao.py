@@ -10,6 +10,7 @@ fahrenheit = (celsius * 9/5) + 32
 
 # Saída de Dados
 print("Temperatura em Fahrenheit: ", fahrenheit)
+print("======================")
       
       
      
