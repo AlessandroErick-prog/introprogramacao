@@ -11,4 +11,4 @@ for i in range(3):
 print("\n=== BOLETIM DE NOTAS ===")
 for i in range(3):
     media = sum(notas[i]) / len(notas[i])
-    print(f"\nAluno (i + 1): media final = {media:.2f}")
+    print(f"\nAluno {i + 1}: media final = {media:.2f}")
