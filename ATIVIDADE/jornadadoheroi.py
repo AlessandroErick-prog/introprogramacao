@@ -8,10 +8,24 @@ mana_heroi = 0
 ouro_heroi = 0
 pocoes_heroi = 0
 
+# NOVO (vetor): lista com os equipamentos comprados na loja
+equipamentos = []
+
+# NOVO (matriz): cada linha é um monstro -> [nome, hp, ataque, ouro]
+monstros = [
+    ["Lobo", 40, 10, 15],
+    ["Goblin", 60, 14, 25],
+    ["Troll", 110, 20, 50]
+]
+
 def criar_personagem():
     global nome_heroi, classe_heroi, hp_heroi, ataque_heroi, defesa_heroi, mana_heroi
     print("=== JORNADA DO HERÓI ===")
-    nome_heroi = input("Nome do herói: ")
+    # NOVO (strings): strip() tira espaços extras, title() deixa cada palavra com inicial maiúscula
+    nome_heroi = input("Nome do herói: ").strip().title()
+    # NOVO (strings + if): len() verifica se o nome ficou vazio
+    if len(nome_heroi) == 0:
+        nome_heroi = "Aventureiro"
     print("1-Guerreiro 2-Mago 3-Arqueiro 4-Ladino")
     classe = input("Escolha a classe do herói (1, 2, 3 ou 4): ")
     
@@ -32,27 +46,49 @@ def ver_ficha():
     print("=== FICHA ===")
     print("Nome:", nome_heroi)
     print("Classe:", classe_heroi)
+    # NOVO (strings): fatiamento [:3] pega as 3 primeiras letras e upper() deixa em maiúsculas
+    print("Sigla da classe:", classe_heroi[:3].upper())
     print("HP:", hp_heroi)
     print("Ataque:", ataque_heroi)
     print("Defesa:", defesa_heroi)
     print("Mana:", mana_heroi)
     print("Ouro:", ouro_heroi)
     print("Poções:", pocoes_heroi)
+    # NOVO (for + vetor): percorre a lista de equipamentos
+    print("Equipamentos:")
+    if len(equipamentos) == 0:
+        print("  (nenhum)")
+    else:
+        for item in equipamentos:
+            print("  -", item)
+
+# NOVO (função com retorno): calcula o dano considerando a defesa (mínimo 1)
+def calcular_dano(ataque, defesa):
+    return max(1, ataque - defesa)
 
 def batalha():
     global hp_heroi, ouro_heroi, pocoes_heroi
-    
     print("=== BATALHA ===")
-    print("1-Lobo 2-Goblin 3-Troll")
+    # NOVO (for + matriz): lista os monstros a partir da matriz
+    for i in range(len(monstros)):
+        print(f"{i + 1}-{monstros[i][0]}", end=" ")
+    print()
     monstro = input("Escolha o monstro (1, 2 ou 3): ")
     
     match monstro:
         case "1":
-            nome_m, hp_m, ataque_m, ouro_m = "Lobo", 40, 10, 15
+            nome_m, hp_m, ataque_m, ouro_m = monstros[0]
         case "2":
-            nome_m, hp_m, ataque_m, ouro_m = "Goblin", 60, 14, 25
+            nome_m, hp_m, ataque_m, ouro_m = monstros[1]
         case "3":
-            nome_m, hp_m, ataque_m, ouro_m = "Troll", 110, 20, 50
+            nome_m, hp_m, ataque_m, ouro_m = monstros[2]
+        case _:
+            # NOVO: evita erro no programa quando a escolha é inválida
+            print("Escolha inválida!")
+            return
+    
+    # NOVO (strings): upper() para destacar o nome do monstro
+    print("Um", nome_m.upper(), "apareceu!")
             
     while hp_m > 0 and hp_heroi > 0:
         print(f"Você: {hp_heroi} HP | {nome_m}: {hp_m} HP")
@@ -77,8 +113,8 @@ def batalha():
                 
         # Turno do monstro (só acontece se ele ainda estiver vivo)
         if hp_m > 0:
-            # Bônus: A defesa do herói agora reduz o dano recebido (mínimo 1 de dano)
-            dano_recebido = max(1, ataque_m - defesa_heroi)
+            # A defesa do herói reduz o dano recebido (agora usando a função calcular_dano)
+            dano_recebido = calcular_dano(ataque_m, defesa_heroi)
             hp_heroi = hp_heroi - dano_recebido
             print(f"O {nome_m} causou {dano_recebido} de dano (Sua defesa bloqueou {defesa_heroi}!).")
             
@@ -107,6 +143,8 @@ def loja():
                 if ouro_heroi >= 40:
                     ouro_heroi -= 40
                     defesa_heroi += 5
+                    # NOVO (vetor): guarda o item comprado na lista
+                    equipamentos.append("Armadura +5 de defesa")
                     print("Sua defesa aumentou!")
                 else:
                     print("Ouro insuficiente!")
